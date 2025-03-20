@@ -1,5 +1,6 @@
 - name: play1
   hosts: prod
+  gather_facts: no
   tasks:
     - name: task1 of play1
       ansible.builtin.debug:
