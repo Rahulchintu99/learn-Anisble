@@ -6,7 +6,6 @@
       ansible.builtin.debug:
         msg: "Hello world"
 
-
 - name: play2
   hosts: dev
   gather_facts: no
