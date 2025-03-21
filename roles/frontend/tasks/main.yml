@@ -1,5 +1,5 @@
 - name: Configuring hostname
-  ansible.builtin.debug: set-hostname={{ component }}
+  ansible.builtin.shell: set-hostname {{ component }}
 
 - name: Installing nginx
   ansible.builtin.package:
