@@ -1,0 +1,38 @@
+- name: Configuring hostname
+  ansible.builtin.debug: set-hostname={{ component }}
+
+- name: Installing nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Copying nginx proxy configuration
+  ansible.builtin.copy:
+    src: expense.conf
+    dest: "{{ proxy_path }}"
+
+- name: cleaning of {{ component }} directory
+  ansible.builtin.file:
+    path: "{{ component_path }}"
+    state: absent
+
+- name: creating html {{ component }} directory
+  ansible.builtin.file:
+    path: "{{component_path}}"
+    state: directory
+
+- name: download and extract {{ component }} code
+  ansible.builtin.unarchive:
+    src: "{{ url }}"
+    dest: "{{component_path}}"
+    remote_src: yes
+
+- name: Restarting nginx
+  ansible.builtin.service: 
+    name: nginx
+    state: restarted
+  
+
+
+  
+        
