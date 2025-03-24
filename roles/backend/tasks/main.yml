@@ -11,7 +11,9 @@
 
 - name: creating {{ app user }} app user 
   ansible.builtin.user:
+    user:
     name: "{{ app_user }}"
+
 
 - name: copy the {{ component }} systemd file
   ansible.builtin.copy:
