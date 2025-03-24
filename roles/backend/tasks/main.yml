@@ -42,7 +42,7 @@
 - name: installing pre-requisite packages for Injection
   ansible.builtin.pip:
     name:
-     - python3-mysqldb
+      - PyMySQL
     state: present
   executable: pip3.11
 
