@@ -43,6 +43,7 @@
   ansible.builtin.pip:
     name:
       - PyMySQL
+      - cryptography
   executable: pip3.11
 
 - name: Generation {{ component }} artifacts
@@ -58,3 +59,8 @@
     login_user: root
     login_password: ExpenseApp@1
 
+- name: Restarting the {{ component }} service
+  ansible.builtin.systemd.service:
+    name: backend
+    state: started
+    daemon_reload: true
