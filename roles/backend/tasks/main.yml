@@ -39,6 +39,13 @@
     name: mysql-server
     state: present
 
+- name: installing pre-requisite packages for Injection
+  ansible.builtin.pip:
+    name:
+     - python3-mysqldb
+    state: present
+  executable: pip3.11
+
 - name: Generation {{ component }} artifacts
   community.general.npm:
     path: "{{ app_dir }}"
@@ -51,8 +58,6 @@
     login_host: 172.31.14.45
     login_user: root
     login_password: ExpenseApp@1
-
-
 
 - name: Restarting nginx
   ansible.builtin.service: 
