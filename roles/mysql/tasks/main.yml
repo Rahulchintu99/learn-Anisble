@@ -1,0 +1,12 @@
+- name: Configuring hostname
+ansible.builtin.shell: set-hostname {{ component }}
+
+- name: Installing {{ component }}
+  ansible.builtin.package:
+    name: mysql-server
+    state: present
+
+- name: Restarting nginx
+  ansible.builtin.service: 
+    name: nginx
+    state: restarted
