@@ -6,7 +6,7 @@
     name: mysql-server
     state: present
 
-- name: Restarting nginx
+- name: Restarting mysqld
   ansible.builtin.service: 
     name: mysqld
     state: started
