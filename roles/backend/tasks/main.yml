@@ -43,7 +43,6 @@
   ansible.builtin.pip:
     name:
       - PyMySQL
-    state: present
   executable: pip3.11
 
 - name: Generation {{ component }} artifacts
